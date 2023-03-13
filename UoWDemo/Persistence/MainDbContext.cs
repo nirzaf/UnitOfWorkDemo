@@ -3,14 +3,14 @@ using UoWDemo.Entities;
 
 namespace UoWDemo.Persistence
 {
-    public class MainDbContext : DbContext, IMainDbContext
+    public sealed class MainDbContext : DbContext, IMainDbContext
     {
         public MainDbContext(DbContextOptions<MainDbContext> options) : base(options)
         {
             ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
         }
 
-        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default(CancellationToken))
+        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
             foreach (var item in ChangeTracker.Entries<IEntity>().AsEnumerable())
             {

@@ -10,9 +10,9 @@ namespace UoWDemo.Errors
     public class UoWDemoProblemDetailsFactory : ProblemDetailsFactory
     {
         private readonly ApiBehaviorOptions _options;
-        public UoWDemoProblemDetailsFactory(IOptions<ApiBehaviorOptions> options)
+        public UoWDemoProblemDetailsFactory(IOptions<ApiBehaviorOptions>? options)
         {
-            _options = options?.Value ?? throw new ArgumentException(nameof(options));
+            _options = options?.Value ?? throw new ArgumentException(null, nameof(options));
         }
 
         public override ProblemDetails CreateProblemDetails(HttpContext httpContext, int? statusCode = null, string? title = null,

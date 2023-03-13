@@ -6,7 +6,7 @@ namespace UoWDemo.Controllers
 {
     public class ApiController : ControllerBase
     {
-        protected IActionResult Problem(List<ErrorOr.Error> errors)
+        protected IActionResult Problem(List<Error> errors)
         {
             if (errors.Count is 0)
                 return Problem();

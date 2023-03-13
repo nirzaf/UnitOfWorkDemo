@@ -43,9 +43,9 @@ namespace UoWDemo.Behavior
                     name: nameof(ErrorOr<object>.From),
                     bindingAttr: BindingFlags.Static | BindingFlags.Public,
                     types: new[] { typeof(List<Error>) })?
-                .Invoke(null, new[] { errors })!;
+                .Invoke(null, new object?[] { errors })!;
 
-            return response is not null;
+            return response.IsError;
         }
     }
 }

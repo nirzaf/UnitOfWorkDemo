@@ -24,8 +24,7 @@ namespace UoWDemo.Controllers
             var query = new GetPersonByIdQuery(id);
             var result = await _mediator.Send(query);
 
-            return result.Match(resp => StatusCode((int)HttpStatusCode.OK, resp),
-                errors => Problem(errors));
+            return result.Match(resp => StatusCode((int)HttpStatusCode.OK, resp), Problem);
         }
     }
 }
